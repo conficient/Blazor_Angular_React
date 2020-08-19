@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shared\Blazor.Shared.csproj" />
+    <ProjectReference Include="..\..\CartLib\CartLib.csproj" />
   </ItemGroup>
 
 </Project>

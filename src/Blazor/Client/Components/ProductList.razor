@@ -1,0 +1,36 @@
+﻿@inject CartState state
+@inject HttpClient Http
+
+@if(products != null)
+{
+    <ul class="list-group">
+    @foreach(var p in products)
+    {
+        <li class="list-group-item">
+            <h5 class="mt-0">@p.Name</h5>
+            <h6>$ @p.Price</h6>
+            <button @onclick="@(()=> AddProduct(p))">Add to Cart</button>
+        </li>
+    }
+    </ul>
+} 
+else 
+{
+    <p>Products loading...</p>
+}
+
+@code
+{
+
+    private Product[] products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await Http.GetFromJsonAsync<Product[]>("Products");
+    }
+
+    private void AddProduct(Product p)
+    {
+        state.AddProduct(p);
+    }
+}

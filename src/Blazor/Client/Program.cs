@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Blazor.Client.Components;
 
 namespace Blazor.Client
 {
@@ -18,6 +19,10 @@ namespace Blazor.Client
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+            // create a singleton cartState - this is WASM so Singleton is okay
+            // on Blazor Server we'd use a Scoped service
+            builder.Services.AddSingleton<CartState>();
 
             await builder.Build().RunAsync();
         }

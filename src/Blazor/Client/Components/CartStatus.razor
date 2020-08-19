@@ -1,0 +1,26 @@
+﻿@inject CartState state
+<div class="cart-status">
+    @if(state.Cart.IsEmpty) 
+    {
+        <b>Cart is empty</b>
+    }
+    else 
+    {
+        <small>Your cart has @state.Cart.CartCount items totalling $@state.Cart.CartTotal</small>
+        @* View the cart *@
+        <a href="/cart" class="btn btn-sm btn-primary">View Cart</a>
+    }
+</div>
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        // wire up OnChange event to refresh when the cart is changed
+        state.OnChange += () =>
+        {
+            StateHasChanged();
+        };
+    }
+
+}

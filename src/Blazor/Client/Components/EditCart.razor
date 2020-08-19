@@ -1,0 +1,53 @@
+﻿@inject CartState state
+
+@if (state.Cart.IsEmpty)
+{
+    <p>You have no items in your cart.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Product</td>
+                <td class="text-right">Qty</td>
+                <td class="text-right">Total</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in state.Cart.Items)
+            {
+                <tr>
+                    <td>@i.Name</td>
+                    <td class="text-right">@i.Quantity</td>
+                    <td class="text-right">$@i.Total</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr class="text-primary">
+                <td colspan="2" class="text-right">Total</td>
+                <td class="text-right"><b>$@state.Cart.CartTotal</b></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <button class="btn btn-primary" title="Removes all items" @onclick="ClearCart">Clear my cart</button>
+}
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        state.OnChange += () =>
+        {
+            StateHasChanged();
+        };
+    }
+
+    void ClearCart()
+    {
+        // remove all items
+        state.ClearAll();
+    }
+}
