@@ -9,7 +9,9 @@ namespace Shared
     /// </summary>
     public class Cart
     {
-
+        /// <summary>
+        /// List of items in the cart
+        /// </summary>
         public List<CartItem> Items = new List<CartItem>();
 
         /// <summary>
@@ -37,7 +39,6 @@ namespace Shared
             else
                 // increment count on item
                 existing.Quantity += 1;
-
         }
 
         /// <summary>

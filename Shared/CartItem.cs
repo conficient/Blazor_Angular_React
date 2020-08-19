@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Shared
 {
+    /// <summary>
+    /// Single cart item
+    /// </summary>
     public class CartItem
     {
         /// <summary>

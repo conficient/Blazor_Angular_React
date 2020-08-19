@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Shared
 {
+    /// <summary>
+    /// Simple product class
+    /// </summary>
     public class Product
     {
         /// <summary>
