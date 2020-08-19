@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Shared
+namespace CartLib
 {
     /// <summary>
     /// A shared class to represent a shopping cart
